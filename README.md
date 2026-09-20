@@ -37,6 +37,6 @@ Milk is open source and contributions aren't limited to code.
 
 You can contribute through research, café data, product ideas, design, community work, documentation, or development.
 
-Check the GitHub Issues to see what we're working on.
+Check the [GitHub Issues](https://github.com/KevinTss/milk-project/issues) to see what we're working on.
 
-See CONTRIBUTING.md for contribution guidelines.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
