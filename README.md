@@ -1,56 +1,42 @@
-# Welcome to your Expo app 👋
+# Milk
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Making plant-based milk the easy, visible, and fair choice everywhere.**
 
-## Get started
+Milk is an open-source initiative working to make plant-based milk a normal and accessible choice.
 
-1. Install dependencies
+## First product
 
-   ```bash
-   npm install
-   ```
+We're starting with a simple mobile map for cafés and coffee shops.
 
-2. Start the app
+It helps people discover:
 
-   ```bash
-   npx expo start
-   ```
+- 🌱 Where plant-based milk is available
+- 🥛 Which plant-based milks are offered
+- 💸 Whether plant-based milk costs extra
+- ⭐ Places that offer plant-based milk at no extra cost
 
-In the output, you'll find options to open the app in a
+The app is only the first step. Milk can evolve into other tools, datasets, research, and campaigns supporting the same mission.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Repository
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+```text
+apps/
+  api/        Backend and API
+  mobile/     Mobile application
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+docs/         Project, product and research documentation
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Project
 
-### Other setup steps
+Read about the mission, problem and broader direction in docs/project.md.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Contributing
 
-## Learn more
+Milk is open source and contributions aren't limited to code.
 
-To learn more about developing your project with Expo, look at the following resources:
+You can contribute through research, café data, product ideas, design, community work, documentation, or development.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Check the GitHub Issues to see what we're working on.
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+See CONTRIBUTING.md for contribution guidelines.
