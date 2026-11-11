@@ -16,6 +16,17 @@ export type MilkType =
   /** A surcharge is known but which milk type(s) it applies to isn't. */
   | 'unspecified';
 
+/** Canonical display name for each `MilkType`, shared by every client. */
+export const MILK_TYPE_LABELS: Record<MilkType, string> = {
+  oat: 'Oat',
+  soy: 'Soy',
+  almond: 'Almond',
+  coconut: 'Coconut',
+  rice: 'Rice',
+  other: 'Other',
+  unspecified: 'Unspecified type',
+};
+
 export type Surcharge =
   | { kind: 'none' }
   | { kind: 'amount'; amount: number; currency: string };

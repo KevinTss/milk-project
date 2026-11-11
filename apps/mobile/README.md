@@ -36,6 +36,26 @@ This repo is a pnpm workspace. Always use `pnpm`, not `npm`/`yarn` — install i
 
 You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+## Café data
+
+The map fetches cafés from the [API](../api) at startup (see
+[use-places.ts](src/hooks/use-places.ts)). For local dev, run the API
+alongside the mobile app:
+
+```bash
+# from the repo root, in another terminal
+pnpm --filter api start:dev
+```
+
+By default the app talks to `http://localhost:3000` (`10.0.2.2` on the
+Android emulator, which can't resolve `localhost` as the host machine). To
+point at a deployed API instead — e.g. a Vercel URL — copy `.env.example` to
+`.env` and set `EXPO_PUBLIC_API_BASE_URL`. A plain-HTTP local server works
+from the simulator because `app.json` allows local networking
+(`NSAllowsLocalNetworking`) under iOS's App Transport Security; this is why a
+change to `app.json` needs a native rebuild (`pnpm ios`/`pnpm android`) to
+take effect, not just a JS reload.
+
 ### Troubleshooting: "Unable to resolve ..." from a pnpm-only package
 
 If Metro fails to resolve a package that clearly exists in `node_modules/.pnpm`, it's almost always one of two pnpm-specific issues:

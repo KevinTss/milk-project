@@ -1,13 +1,12 @@
-import { Camera, Map, UserLocation } from '@maplibre/maplibre-react-native';
 import * as Location from 'expo-location';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 
+import { CafeMap } from '@/components/cafe-map';
+import { PlacesStatusBanner } from '@/components/places-status-banner';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
-
-const MAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 
 type PermissionState = 'checking' | 'granted' | 'denied';
 
@@ -44,18 +43,15 @@ export default function HomeScreen() {
   }
 
   return (
-    <Map style={styles.map} mapStyle={MAP_STYLE_URL}>
-      <Camera 
-        trackUserLocation="default"
-        initialViewState={{ zoom: 14 }}
-      />
-      <UserLocation accuracy />
-    </Map>
+    <ThemedView style={styles.container}>
+      <CafeMap />
+      <PlacesStatusBanner />
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  map: {
+  container: {
     flex: 1,
   },
   center: {

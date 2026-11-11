@@ -66,6 +66,10 @@ Use `'unspecified'` as a `MilkType` when a surcharge is known but the exact
 milk type(s) it applies to isn't (see Café Bacatá in
 [issue #3](https://github.com/KevinTss/milk-project/issues/3)'s research).
 
+`MILK_TYPE_LABELS` gives the canonical display name for each `MilkType`
+(`'oat' → 'Oat'`, `'unspecified' → 'Unspecified type'`, ...), so every client
+shows the same wording instead of each inventing its own.
+
 ## What's deliberately left out
 
 Per the product doc: total drink prices, opening hours, milk brands,
