@@ -1,0 +1,99 @@
+[
+  {
+    "id": "zeitgeist-lyon-1",
+    "name": "Zeitgeist",
+    "location": { "latitude": 45.7673, "longitude": 4.8343 },
+    "address": "12 rue des Augustins, 69001 Lyon",
+    "website": "https://zeitgeist-cafe.com",
+    "plantMilkAvailable": {
+      "label": "verified",
+      "value": true,
+      "evidence": [
+        {
+          "source": "https://zeitgeist-cafe.com/wp-content/uploads/2026/10/OCT-A4-combine.pdf",
+          "evidenceDate": "2026-10-04"
+        }
+      ],
+      "verificationDate": "2026-10-04"
+    },
+    "milkTypes": {
+      "label": "verified",
+      "value": [
+        {
+          "type": "oat",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "none" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "soy",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "none" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "almond",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 0.5, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "coconut",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 0.5, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "source": "https://zeitgeist-cafe.com/wp-content/uploads/2026/10/OCT-A4-combine.pdf",
+          "evidenceDate": "2026-10-04"
+        }
+      ],
+      "verificationDate": "2026-10-04"
+    }
+  },
+  {
+    "id": "cafe-bacata-lyon-5",
+    "name": "Café Bacatá",
+    "location": { "latitude": 45.7578, "longitude": 4.8231 },
+    "address": "4 rue de la Fronde, 69005 Lyon",
+    "website": "https://cafebacata.fr",
+    "plantMilkAvailable": {
+      "label": "reported",
+      "value": true,
+      "evidence": [{ "source": "https://cafebacata.fr/menu", "evidenceDate": "2026-10-04" }],
+      "verificationDate": null,
+      "note": "Surcharge is advertised but which milk types it applies to isn't documented yet."
+    },
+    "milkTypes": {
+      "label": "reported",
+      "value": [
+        {
+          "type": "unspecified",
+          "surcharge": {
+            "label": "reported",
+            "value": { "kind": "amount", "amount": 1, "currency": "EUR" },
+            "evidence": [{ "source": "https://cafebacata.fr/menu", "evidenceDate": "2026-10-04" }],
+            "verificationDate": null
+          }
+        }
+      ],
+      "evidence": [{ "source": "https://cafebacata.fr/menu", "evidenceDate": "2026-10-04" }],
+      "verificationDate": null,
+      "note": "A flat surcharge is advertised, but which milk type(s) it applies to isn't documented yet."
+    }
+  }
+]
