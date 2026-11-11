@@ -91,6 +91,7 @@ Combines, rather than picks:
 
 - **From A**: the map stays primary and full-bleed; pins are plain colored dots (not icons/badges); tap → compact bottom sheet → tap again → full detail. This is the smallest delta from the current MapLibre implementation.
 - **Pin color, resolved with Kevin**: a 5-state convention — solid green (all milk types free), **split green/amber** (mixed, e.g. Zeitgeist: oat/soy free, almond/coconut +€0.50), solid amber (surcharge on everything), gray (unknown), outline (no plant milk). The split pin was Kevin's call over "best case wins" or "worst case wins" — it shows the mix honestly without requiring a tap, at the cost of one more visual state to design (a two-tone marker instead of a plain dot).
+- **Amber is a 3-step scale, not one color**: gold (≤€0.50), orange (€0.51–€0.99), deep brown (≥€1.00) — so a pin communicates roughly *how much* extra, not just *that* there's a surcharge. For a café with several paid milk types (e.g. Slake Terreaux: oat +€0.50, coconut +€0.70), the pin uses the **highest** surcharge among them, as a "most you might pay here" signal. Real thresholds from the Lyon data: Zeitgeist/Caillou/Joséphine/Slake-oat sit at €0.50 (gold), Slake-coconut at €0.70 (orange), Nuage Café and Café Bacatá at €1.00 (brown). The map legend shows this as a small gradient swatch rather than three separate dots, to keep the legend compact.
 - **From B**: a single filter toggle ("No surcharge") sits under the search bar — one chip, not a whole shelf system — plus the detail screen's "nearby alternatives" line when a café isn't the cheapest option.
 - **From C, kept restrained per Kevin**: one computed stat line ("🌱 6 of 10 nearby cafés have a €0 option") above the map — the mission signal, with no ribbons, no scoring, no "thank this café" mechanic. Nothing here needs product concepts beyond what `packages/domain` already models.
 - Detail screen keeps A's structure (hero badge, per-type rows with price + verification chip, verification footnote, "Contribute information" CTA for reported/unknown data) since none of the other directions improved on it.
@@ -105,6 +106,7 @@ Asked directly, Kevin chose:
 
 1. **Pin color for mixed cafés** → **split/dual-tone pin**, not "best case" or "worst case" wins. Reflected above and in the mockup's legend (all free / mixed / surcharge / unknown).
 2. **Activism framing** → **restrained**: keep the one computed stat line, skip the recognition ribbon and "thank this café" mechanic from Direction C for V1.
+3. **Amber shouldn't be one color** — Kevin asked for the surcharge color itself to vary by size, not just mark "surcharge vs. not." → amber is now a 3-step gold/orange/brown scale keyed to the surcharge amount (see the proposed-direction section above for thresholds and the max-surcharge rule for multi-type cafés).
 
 ## Still open
 
