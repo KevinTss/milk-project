@@ -23,9 +23,11 @@
     "test:e2e": "vitest run --config ./vitest.config.e2e.ts"
   },
   "dependencies": {
+    "@milk/domain": "workspace:*",
     "@nestjs/common": "^12.0.1",
     "@nestjs/core": "^12.0.1",
     "@nestjs/platform-express": "^12.0.1",
+    "express": "^5.2.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
