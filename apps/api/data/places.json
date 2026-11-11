@@ -2,7 +2,7 @@
   {
     "id": "zeitgeist-lyon-1",
     "name": "Zeitgeist",
-    "location": { "latitude": 45.7673, "longitude": 4.8343 },
+    "location": { "latitude": 45.7676631, "longitude": 4.8310263 },
     "address": "12 rue des Augustins, 69001 Lyon",
     "website": "https://zeitgeist-cafe.com",
     "plantMilkAvailable": {
@@ -62,38 +62,395 @@
           "evidenceDate": "2026-10-04"
         }
       ],
-      "verificationDate": "2026-10-04"
+      "verificationDate": "2026-10-04",
+      "note": "Vegan café: surcharges are relative to its standard drink price."
     }
   },
   {
-    "id": "cafe-bacata-lyon-5",
-    "name": "Café Bacatá",
-    "location": { "latitude": 45.7578, "longitude": 4.8231 },
-    "address": "4 rue de la Fronde, 69005 Lyon",
-    "website": "https://cafebacata.fr",
+    "id": "caillou-cafe-comptoir-lyon-5",
+    "name": "Caillou Café Comptoir",
+    "location": { "latitude": 45.7667471, "longitude": 4.8209369 },
+    "address": "60 quai de Pierre-Scize, 69005 Lyon",
     "plantMilkAvailable": {
       "label": "reported",
       "value": true,
-      "evidence": [{ "source": "https://cafebacata.fr/menu", "evidenceDate": "2026-10-04" }],
+      "evidence": [
+        {
+          "source": "Contributor's firsthand visit, shortly before 2026-10-04 (exact date not recorded)",
+          "evidenceDate": null
+        }
+      ],
       "verificationDate": null,
-      "note": "Surcharge is advertised but which milk types it applies to isn't documented yet."
+      "note": "A single firsthand visit; a Google Maps listing supports the location but a generic listing doesn't verify pricing. Needs a second independent source to reach verified."
     },
     "milkTypes": {
       "label": "reported",
       "value": [
         {
-          "type": "unspecified",
+          "type": "oat",
           "surcharge": {
             "label": "reported",
-            "value": { "kind": "amount", "amount": 1, "currency": "EUR" },
-            "evidence": [{ "source": "https://cafebacata.fr/menu", "evidenceDate": "2026-10-04" }],
+            "value": { "kind": "none" },
+            "evidence": [
+              {
+                "source": "Contributor's firsthand visit, shortly before 2026-10-04 (exact date not recorded)",
+                "evidenceDate": null
+              }
+            ],
+            "verificationDate": null
+          }
+        },
+        {
+          "type": "almond",
+          "surcharge": {
+            "label": "reported",
+            "value": { "kind": "amount", "amount": 0.5, "currency": "EUR" },
+            "evidence": [
+              {
+                "source": "Contributor's firsthand visit, shortly before 2026-10-04 (exact date not recorded)",
+                "evidenceDate": null
+              }
+            ],
+            "verificationDate": null
+          }
+        },
+        {
+          "type": "coconut",
+          "surcharge": {
+            "label": "reported",
+            "value": { "kind": "amount", "amount": 0.5, "currency": "EUR" },
+            "evidence": [
+              {
+                "source": "Contributor's firsthand visit, shortly before 2026-10-04 (exact date not recorded)",
+                "evidenceDate": null
+              }
+            ],
             "verificationDate": null
           }
         }
       ],
-      "evidence": [{ "source": "https://cafebacata.fr/menu", "evidenceDate": "2026-10-04" }],
+      "evidence": [
+        {
+          "source": "Contributor's firsthand visit, shortly before 2026-10-04 (exact date not recorded)",
+          "evidenceDate": null
+        }
+      ],
+      "verificationDate": null
+    }
+  },
+  {
+    "id": "kafe-stockholm-lyon-1",
+    "name": "Kafé Stockholm",
+    "location": { "latitude": 45.769044, "longitude": 4.8342149 },
+    "address": "10 rue Saint-Polycarpe, 69001 Lyon",
+    "plantMilkAvailable": {
+      "label": "reported",
+      "value": true,
+      "evidence": [
+        {
+          "source": "https://maps.app.goo.gl/sT4D3erc6bDp7Gij8 (customer menu photo)",
+          "evidenceDate": null
+        }
+      ],
       "verificationDate": null,
-      "note": "A flat surcharge is advertised, but which milk type(s) it applies to isn't documented yet."
+      "note": "Photo dates to May 2025 (exact day not recorded) — well past the 90-day freshness window, so treat as needing reconfirmation rather than current."
+    },
+    "milkTypes": {
+      "label": "unknown",
+      "value": null,
+      "evidence": [
+        {
+          "source": "https://maps.app.goo.gl/sT4D3erc6bDp7Gij8 (customer menu photo)",
+          "evidenceDate": null
+        }
+      ],
+      "verificationDate": null,
+      "note": "The photographed menu showed an oat surcharge of +€0.80 as of May 2025, but that evidence is stale — current options and pricing are unconfirmed."
+    }
+  },
+  {
+    "id": "cafe-bacata-lyon-5",
+    "name": "Café Bacatá",
+    "location": { "latitude": 45.763989, "longitude": 4.8279084 },
+    "address": "4 rue de la Fronde, 69005 Lyon",
+    "website": "https://cafebacata.fr",
+    "plantMilkAvailable": {
+      "label": "verified",
+      "value": true,
+      "evidence": [{ "source": "https://cafebacata.fr/menu", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04"
+    },
+    "milkTypes": {
+      "label": "verified",
+      "value": [
+        {
+          "type": "unspecified",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 1, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        }
+      ],
+      "evidence": [{ "source": "https://cafebacata.fr/menu", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04",
+      "note": "The official menu documents a flat +€1 surcharge but doesn't specify which milk type(s) it applies to."
+    }
+  },
+  {
+    "id": "josephine-lyon-1",
+    "name": "Joséphine",
+    "location": { "latitude": 45.7692696, "longitude": 4.8307059 },
+    "address": "3 place Sathonay, 69001 Lyon",
+    "website": "https://www.josephinelyon.fr/salon-de-the",
+    "plantMilkAvailable": {
+      "label": "verified",
+      "value": true,
+      "evidence": [{ "source": "https://www.josephinelyon.fr/salon-de-the", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04"
+    },
+    "milkTypes": {
+      "label": "verified",
+      "value": [
+        {
+          "type": "oat",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 0.5, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        }
+      ],
+      "evidence": [{ "source": "https://www.josephinelyon.fr/salon-de-the", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04",
+      "note": "Oat is the only identified plant-milk option; others may exist but aren't documented."
+    }
+  },
+  {
+    "id": "nuage-cafe-lyon-1",
+    "name": "Nuage Café",
+    "location": { "latitude": 45.7693632, "longitude": 4.8343829 },
+    "address": "16 rue des Capucins, 69001 Lyon",
+    "website": "https://www.nuagecafelyon.fr/copy-of-menu",
+    "plantMilkAvailable": {
+      "label": "verified",
+      "value": true,
+      "evidence": [{ "source": "https://www.nuagecafelyon.fr/copy-of-menu", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04"
+    },
+    "milkTypes": {
+      "label": "verified",
+      "value": [
+        {
+          "type": "oat",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 1, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "almond",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 1, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "coconut",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 1, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        }
+      ],
+      "evidence": [{ "source": "https://www.nuagecafelyon.fr/copy-of-menu", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04",
+      "note": "Organic oat, almond and coconut each carry a +€1 surcharge. The menu's matcha already includes plant milk in its description, so this surcharge shouldn't be assumed to apply to every drink."
+    }
+  },
+  {
+    "id": "moka-lyon-7",
+    "name": "MOKA",
+    "location": { "latitude": 45.7498496, "longitude": 4.8478281 },
+    "address": "18 rue de la Madeleine, 69007 Lyon",
+    "website": "https://www.patisserie-moka.fr/",
+    "plantMilkAvailable": {
+      "label": "verified",
+      "value": true,
+      "evidence": [
+        {
+          "source": "https://www.patisserie-moka.fr/_files/ugd/b5024d_780003c929ba4634af3e2deb8009d8d2.pdf",
+          "evidenceDate": "2026-10-04"
+        }
+      ],
+      "verificationDate": "2026-10-04",
+      "note": "Based on the official Spring 2026 menu PDF; a newer linked PDF referenced on the site could not be inspected."
+    },
+    "milkTypes": {
+      "label": "verified",
+      "value": [
+        {
+          "type": "oat",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "none" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "source": "https://www.patisserie-moka.fr/_files/ugd/b5024d_780003c929ba4634af3e2deb8009d8d2.pdf",
+          "evidenceDate": "2026-10-04"
+        }
+      ],
+      "verificationDate": "2026-10-04"
+    }
+  },
+  {
+    "id": "saba-bellecour-lyon-2",
+    "name": "Sāba Bellecour",
+    "location": { "latitude": 45.7558689, "longitude": 4.8329602 },
+    "address": "6 rue de la Charité, 69002 Lyon",
+    "website": "https://www.sabacoffeeshop.bio/",
+    "plantMilkAvailable": {
+      "label": "verified",
+      "value": true,
+      "evidence": [{ "source": "https://www.sabacoffeeshop.bio/notre-offre", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04",
+      "note": "Formerly Newtree."
+    },
+    "milkTypes": {
+      "label": "verified",
+      "value": [
+        {
+          "type": "oat",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "none" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "almond",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "none" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "soy",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "none" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "rice",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "none" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        }
+      ],
+      "evidence": [{ "source": "https://www.sabacoffeeshop.bio/notre-offre", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04",
+      "note": "The official site explicitly states there's no price difference for milk choice in hot or cold drinks."
+    }
+  },
+  {
+    "id": "ballad-terreaux-lyon-1",
+    "name": "Ballad Terreaux",
+    "location": { "latitude": 45.768268, "longitude": 4.8339188 },
+    "address": "17 rue Sainte-Catherine, 69001 Lyon",
+    "website": "https://ballad.cafe/brunch-terreaux",
+    "plantMilkAvailable": {
+      "label": "verified",
+      "value": true,
+      "evidence": [{ "source": "https://ballad.cafe/carte", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04"
+    },
+    "milkTypes": {
+      "label": "verified",
+      "value": [
+        {
+          "type": "oat",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "none" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        }
+      ],
+      "evidence": [{ "source": "https://ballad.cafe/carte", "evidenceDate": "2026-10-04" }],
+      "verificationDate": "2026-10-04",
+      "note": "Menu explicitly states \"LAIT AVOINE Gratuit\"; applies to the Lyon 1 and Lyon 7 locations."
+    }
+  },
+  {
+    "id": "slake-terreaux-lyon-1",
+    "name": "Slake Terreaux",
+    "location": { "latitude": 45.7660209, "longitude": 4.8323508 },
+    "address": "18 rue de la Platière, 69001 Lyon",
+    "website": "https://www.slake-coffee.com/terreaux",
+    "plantMilkAvailable": {
+      "label": "verified",
+      "value": true,
+      "evidence": [
+        {
+          "source": "https://www.slake-coffee.com/menu-terreaux?location=Slake+Terreaux+Lyon+1&menu=copie-de-coffee--drinks",
+          "evidenceDate": "2026-10-04"
+        }
+      ],
+      "verificationDate": "2026-10-04",
+      "note": "Formerly Diploid."
+    },
+    "milkTypes": {
+      "label": "verified",
+      "value": [
+        {
+          "type": "oat",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 0.5, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        },
+        {
+          "type": "coconut",
+          "surcharge": {
+            "label": "verified",
+            "value": { "kind": "amount", "amount": 0.7, "currency": "EUR" },
+            "evidence": [],
+            "verificationDate": "2026-10-04"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "source": "https://www.slake-coffee.com/menu-terreaux?location=Slake+Terreaux+Lyon+1&menu=copie-de-coffee--drinks",
+          "evidenceDate": "2026-10-04"
+        }
+      ],
+      "verificationDate": "2026-10-04"
     }
   }
 ]
