@@ -22,6 +22,8 @@ This repo is a pnpm workspace. Always use `pnpm`, not `npm`/`yarn` — install i
 
    This boots a simulator if none is running, compiles the native project, installs the dev client, and starts Metro automatically.
 
+   **The simulator window usually opens on its own, but it can take a while (well after the build finishes) — give it a minute before assuming something's wrong.** If it still hasn't shown up, see the troubleshooting section below for how to open it manually.
+
 3. Day-to-day iteration — once the dev client is installed, you don't need to rebuild it for JS/TS changes
 
    ```bash
@@ -41,6 +43,30 @@ If Metro fails to resolve a package that clearly exists in `node_modules/.pnpm`,
 - **A phantom dependency**: the package is an *optional peer dependency* of something you depend on (e.g. `@expo/metro-runtime`, `@expo/log-box`), so npm used to hoist it "by accident" but pnpm's strict linking won't. Fix: add it explicitly to this package's `dependencies` in `package.json`, then `pnpm install`.
 - **Metro can't see it**: check `metro.config.js` doesn't set `resolver.disableHierarchicalLookup = true` — that flag is for hoisted npm/Yarn workspaces and breaks pnpm's symlink-based resolution.
 
+### Troubleshooting: I don't see the app or the simulator window
+
+- **"Port 8081 is running this app in another window"** — a dev server (`expo start`) from an earlier `pnpm ios`/`pnpm start` is already running. It's not an error; find it instead of starting a new one:
+
+  ```bash
+  lsof -nP -iTCP:8081 -sTCP:LISTEN
+  ```
+
+  This is very commonly left running in an editor's integrated terminal (VS Code, etc.) in a tab you've since lost track of — check there before assuming it's a stray process.
+
+- **The simulator window itself isn't on screen** — the app can build and launch successfully (check for `Build Succeeded` and `Opening on <device>` in the logs) even though no window is visible yet. It can take a minute to appear after the build finishes, or it may open behind another window / on a different desktop. If after waiting it's still not showing, try:
+
+  ```bash
+  open -a Simulator
+  ```
+
+  On some Xcode versions this fails with "Unable to find application named 'Simulator'" — the simulator app has been renamed/relocated (e.g. `DeviceHub.app` on Xcode 27+). Find the real path with:
+
+  ```bash
+  find /Applications/Xcode.app -iname "*simulator*.app" -o -iname "*devicehub*.app"
+  ```
+
+  then `open -a "<path found>"`.
+
 ## Get a fresh project
 
 When you're ready, run:
@@ -53,7 +79,7 @@ This command will move the starter code to the **app-example** directory and cre
 
 ### Other setup steps
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
+- Linting is already configured — run `pnpm lint`. See our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/) for more
 - If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
 - Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
 
