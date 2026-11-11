@@ -1,10 +1,12 @@
 import type { Place } from '@milk/domain';
 import { Camera, Map, UserLocation } from '@maplibre/maplibre-react-native';
+import { useAtomValue } from 'jotai';
 import { useCallback, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { PlaceInfoPanel } from '@/components/place-info-panel';
 import { PlaceMarker } from '@/components/place-marker';
+import { placesAtom } from '@/state/places-atom';
 
 const MAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 
@@ -13,17 +15,16 @@ const MAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
  * (e.g. selecting a café). */
 const INITIAL_VIEW_STATE = { zoom: 14 };
 
-interface CafeMapProps {
-  places: Place[];
-}
-
 /**
  * Owns café selection locally so picking a café only re-renders this
  * component's tree, not the screen around it — and `PlaceMarker` is
  * memoized so only the (at most two) markers whose `selected` prop actually
- * changed re-render, not the whole marker list.
+ * changed re-render, not the whole marker list. Reads café data straight
+ * from `placesAtom` rather than taking it as a prop, so nothing upstream
+ * (like the screen handling location permission) needs to know it exists.
  */
-export function CafeMap({ places }: CafeMapProps) {
+export function CafeMap() {
+  const places = useAtomValue(placesAtom);
   const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
   const deselect = useCallback(() => setSelectedPlace(null), []);
 
