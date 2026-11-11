@@ -1,5 +1,6 @@
 import type { Place } from '@milk/domain';
 import { Marker, type MarkerEvent } from '@maplibre/maplibre-react-native';
+import { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import type { NativeSyntheticEvent } from 'react-native';
 
@@ -9,7 +10,11 @@ interface PlaceMarkerProps {
   onPress: (place: Place) => void;
 }
 
-export function PlaceMarker({ place, selected, onPress }: PlaceMarkerProps) {
+/**
+ * Memoized so selecting one café only re-renders that marker and the
+ * previously selected one, not every marker on the map.
+ */
+export const PlaceMarker = memo(function PlaceMarker({ place, selected, onPress }: PlaceMarkerProps) {
   return (
     <Marker
       id={place.id}
@@ -23,7 +28,7 @@ export function PlaceMarker({ place, selected, onPress }: PlaceMarkerProps) {
       <View style={[styles.pin, selected && styles.pinSelected]} />
     </Marker>
   );
-}
+});
 
 const styles = StyleSheet.create({
   pin: {

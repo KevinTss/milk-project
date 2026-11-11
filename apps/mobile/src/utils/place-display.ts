@@ -1,14 +1,4 @@
-import type { MilkType, MilkTypeOffering, VerifiedDetail } from '@milk/domain';
-
-const MILK_TYPE_LABELS: Record<MilkType, string> = {
-  oat: 'Oat',
-  soy: 'Soy',
-  almond: 'Almond',
-  coconut: 'Coconut',
-  rice: 'Rice',
-  other: 'Other',
-  unspecified: 'Unspecified type',
-};
+import { MILK_TYPE_LABELS, type MilkType, type MilkTypeOffering, type VerifiedDetail } from '@milk/domain';
 
 export function milkTypeLabel(type: MilkType): string {
   return MILK_TYPE_LABELS[type];
