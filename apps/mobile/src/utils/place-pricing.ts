@@ -10,8 +10,8 @@ export type AmberTier = 'low' | 'mid' | 'high';
  */
 export type PlaceColorState =
   | { kind: 'green' }
-  | { kind: 'split'; tier: AmberTier }
-  | { kind: 'amber'; tier: AmberTier }
+  | { kind: 'split'; tier: AmberTier; maxAmount: number }
+  | { kind: 'amber'; tier: AmberTier; maxAmount: number }
   | { kind: 'gray' }
   | { kind: 'outline' };
 
@@ -47,8 +47,9 @@ export function placeColorState(place: Place): PlaceColorState {
 
   if (paidAmounts.length === 0) return { kind: 'green' };
 
-  const tier = amberTierFor(Math.max(...paidAmounts));
-  return hasFree ? { kind: 'split', tier } : { kind: 'amber', tier };
+  const maxAmount = Math.max(...paidAmounts);
+  const tier = amberTierFor(maxAmount);
+  return hasFree ? { kind: 'split', tier, maxAmount } : { kind: 'amber', tier, maxAmount };
 }
 
 /** True when a café has at least one free (€0) plant-milk type. */
