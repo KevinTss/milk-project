@@ -1,7 +1,7 @@
 import type { Place } from '@milk/domain';
 import { SymbolView } from 'expo-symbols';
-import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { useMemo, useRef, useState } from 'react';
+import { Modal, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { PlaceColorDot } from '@/components/place-color-dot';
@@ -27,6 +27,7 @@ export function PlaceSearchOverlay({ places, origin, onSelect, onClose }: PlaceS
   const insets = useSafeAreaInsets();
   const theme = useTheme();
   const [query, setQuery] = useState('');
+  const inputRef = useRef<TextInput>(null);
   const { debounced: debouncedQuery, isPending } = useDebouncedValue(query.trim().toLowerCase(), DEBOUNCE_MS);
 
   const results = useMemo(() => {
@@ -38,49 +39,59 @@ export function PlaceSearchOverlay({ places, origin, onSelect, onClose }: PlaceS
   }, [places, origin, debouncedQuery]);
 
   return (
-    <ThemedView style={[styles.container, { paddingTop: insets.top + Spacing.two }]}>
-      <View style={styles.header}>
-        <View style={styles.inputWrap}>
-          <SymbolView
-            name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }}
-            size={16}
-            tintColor={theme.textSecondary}
-          />
-          <TextInput
-            autoFocus
-            value={query}
-            onChangeText={setQuery}
-            placeholder="Search cafés"
-            placeholderTextColor={theme.textSecondary}
-            style={[styles.input, { color: theme.text }]}
-          />
-        </View>
-        <Pressable onPress={onClose} hitSlop={8}>
-          <ThemedText type="small">Cancel</ThemedText>
-        </Pressable>
-      </View>
-      <ScrollView
-        style={[styles.list, isPending && styles.listPending]}
-        keyboardShouldPersistTaps="handled"
-      >
-        {results.map(({ place, distance }) => (
-          <Pressable key={place.id} style={styles.row} onPress={() => onSelect(place)}>
-            <PlaceColorDot place={place} size={14} />
-            <View style={styles.rowText}>
-              <ThemedText type="smallBold">{place.name}</ThemedText>
-              <ThemedText type="small" themeColor="textSecondary">
-                {shortSummaryLabel(place)} · {walkingMinutesLabel(distance)}
-              </ThemedText>
-            </View>
+    <Modal
+      visible
+      animationType="slide"
+      onRequestClose={onClose}
+      // Focusing only once the slide-up finishes (rather than TextInput's own
+      // autoFocus) keeps the keyboard's rise from fighting the modal's own
+      // animation, which is what made it feel like the keyboard "forgot" to open.
+      onShow={() => inputRef.current?.focus()}
+    >
+      <ThemedView style={[styles.container, { paddingTop: insets.top + Spacing.two }]}>
+        <View style={styles.header}>
+          <View style={styles.inputWrap}>
+            <SymbolView
+              name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }}
+              size={16}
+              tintColor={theme.textSecondary}
+            />
+            <TextInput
+              ref={inputRef}
+              value={query}
+              onChangeText={setQuery}
+              placeholder="Search cafés"
+              placeholderTextColor={theme.textSecondary}
+              style={[styles.input, { color: theme.text }]}
+            />
+          </View>
+          <Pressable onPress={onClose} hitSlop={8}>
+            <ThemedText type="small">Cancel</ThemedText>
           </Pressable>
-        ))}
-        {results.length === 0 && (
-          <ThemedText type="small" themeColor="textSecondary" style={styles.empty}>
-            No cafés match “{query}”.
-          </ThemedText>
-        )}
-      </ScrollView>
-    </ThemedView>
+        </View>
+        <ScrollView
+          style={[styles.list, isPending && styles.listPending]}
+          keyboardShouldPersistTaps="handled"
+        >
+          {results.map(({ place, distance }) => (
+            <Pressable key={place.id} style={styles.row} onPress={() => onSelect(place)}>
+              <PlaceColorDot place={place} size={14} />
+              <View style={styles.rowText}>
+                <ThemedText type="smallBold">{place.name}</ThemedText>
+                <ThemedText type="small" themeColor="textSecondary">
+                  {shortSummaryLabel(place)} · {walkingMinutesLabel(distance)}
+                </ThemedText>
+              </View>
+            </Pressable>
+          ))}
+          {results.length === 0 && (
+            <ThemedText type="small" themeColor="textSecondary" style={styles.empty}>
+              No cafés match “{query}”.
+            </ThemedText>
+          )}
+        </ScrollView>
+      </ThemedView>
+    </Modal>
   );
 }
 

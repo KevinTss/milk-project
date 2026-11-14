@@ -1,5 +1,5 @@
 import { SymbolView } from 'expo-symbols';
-import { Pressable, StyleSheet, Switch, View } from 'react-native';
+import { Modal, Pressable, StyleSheet, Switch, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
@@ -19,18 +19,20 @@ export function PlaceFilterOverlay({ noSurchargeOnly, onChangeNoSurchargeOnly, o
   const theme = useTheme();
 
   return (
-    <ThemedView style={[styles.container, { paddingTop: insets.top + Spacing.two }]}>
-      <View style={styles.header}>
-        <ThemedText type="subtitle">Filters</ThemedText>
-        <Pressable onPress={onClose} hitSlop={8}>
-          <SymbolView name={{ ios: 'xmark', android: 'close', web: 'close' }} size={20} tintColor={theme.text} />
-        </Pressable>
-      </View>
-      <View style={styles.row}>
-        <ThemedText type="default">Without surcharge</ThemedText>
-        <Switch value={noSurchargeOnly} onValueChange={onChangeNoSurchargeOnly} />
-      </View>
-    </ThemedView>
+    <Modal visible animationType="slide" onRequestClose={onClose}>
+      <ThemedView style={[styles.container, { paddingTop: insets.top + Spacing.two }]}>
+        <View style={styles.header}>
+          <ThemedText type="subtitle">Filters</ThemedText>
+          <Pressable onPress={onClose} hitSlop={8}>
+            <SymbolView name={{ ios: 'xmark', android: 'close', web: 'close' }} size={20} tintColor={theme.text} />
+          </Pressable>
+        </View>
+        <View style={styles.row}>
+          <ThemedText type="default">Without surcharge</ThemedText>
+          <Switch value={noSurchargeOnly} onValueChange={onChangeNoSurchargeOnly} />
+        </View>
+      </ThemedView>
+    </Modal>
   );
 }
 

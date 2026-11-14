@@ -1,5 +1,5 @@
 import type { Place } from '@milk/domain';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 
 import { MapColors } from '@/constants/map-colors';
 import { pinPriceText } from '@/utils/place-display';
@@ -17,12 +17,14 @@ interface PlacePricePinProps {
 }
 
 /**
- * The map pin: a price pill rather than a plain dot. A plain colored dot
- * reads too much like the blue current-location puck and doesn't answer
- * "how much" without a tap — showing the actual price (or "€0") directly
- * on the pin does both. A café with both free and surcharged types shows
- * its free price with a small surcharge-tier badge rather than cramming
- * two numbers into one pin.
+ * The map pin: a white price pill with colored text/border, rather than a
+ * filled color badge — reads cleanly against the map at any zoom without
+ * turning the map into a field of solid color blobs. Shows the actual
+ * price directly (€0, +€0.50, …) so a tap isn't needed just to learn the
+ * price, and its pill shape keeps it visually distinct from the blue
+ * current-location puck. A café with both free and surcharged types keeps
+ * its free price as the main pill with a small surcharge-tier badge,
+ * rather than cramming two prices into one pin.
  */
 export function PlacePricePin({ place, selected = false }: PlacePricePinProps) {
   const state = placeColorState(place);
@@ -32,13 +34,13 @@ export function PlacePricePin({ place, selected = false }: PlacePricePinProps) {
     return <View style={[styles.outline, selected && styles.outlineSelected]} />;
   }
 
-  const backgroundColor =
+  const color =
     state.kind === 'gray' ? MapColors.gray : state.kind === 'amber' ? AMBER_BY_TIER[state.tier] : MapColors.green;
 
   return (
     <View style={styles.wrapper}>
-      <View style={[styles.pill, { backgroundColor }, selected && styles.pillSelected]}>
-        <Text style={styles.text} numberOfLines={1}>
+      <View style={[styles.pill, { borderColor: color }, selected && styles.pillSelected]}>
+        <Text style={[styles.text, { color }]} numberOfLines={1}>
           {text}
         </Text>
       </View>
@@ -58,8 +60,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 7,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#ffffff',
     borderWidth: 1.5,
-    borderColor: '#ffffff',
+    ...Platform.select({
+      ios: { shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.2, shadowRadius: 2 },
+      android: { elevation: 2 },
+    }),
   },
   pillSelected: {
     height: 28,
@@ -67,7 +73,6 @@ const styles = StyleSheet.create({
     borderWidth: 2.5,
   },
   text: {
-    color: '#ffffff',
     fontSize: 11,
     fontWeight: '700',
   },

@@ -52,12 +52,6 @@ export function placeColorState(place: Place): PlaceColorState {
   return hasFree ? { kind: 'split', tier, maxAmount } : { kind: 'amber', tier, maxAmount };
 }
 
-/** True when a café has at least one free (€0) plant-milk type. */
-export function hasFreeOption(place: Place): boolean {
-  const state = placeColorState(place);
-  return state.kind === 'green' || state.kind === 'split';
-}
-
 /** True when every known plant-milk type at this café is free. */
 export function isFullyFree(place: Place): boolean {
   return placeColorState(place).kind === 'green';

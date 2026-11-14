@@ -1,6 +1,6 @@
 import type { Place } from '@milk/domain';
 import { useMemo } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -88,7 +88,7 @@ export function PlaceInfoPanel({ place, places }: PlaceInfoPanelProps) {
   }, [place, places]);
 
   return (
-    <ThemedView type="backgroundElement" style={styles.panel}>
+    <ThemedView type="background" style={styles.panel}>
       <ThemedText type="subtitle">{place.name}</ThemedText>
       {place.address && (
         <ThemedText type="small" themeColor="textSecondary">
@@ -139,6 +139,10 @@ const styles = StyleSheet.create({
     borderRadius: Spacing.three,
     padding: Spacing.four,
     gap: Spacing.two,
+    ...Platform.select({
+      ios: { shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.15, shadowRadius: 6 },
+      android: { elevation: 4 },
+    }),
   },
   hero: {
     borderRadius: Spacing.two,

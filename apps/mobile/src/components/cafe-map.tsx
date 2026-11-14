@@ -4,8 +4,6 @@ import { useAtomValue } from 'jotai';
 import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { MapBottomBar } from '@/components/map-bottom-bar';
-import { MapLegend } from '@/components/map-legend';
 import { MapTopBar } from '@/components/map-top-bar';
 import { PlaceFilterOverlay } from '@/components/place-filter-overlay';
 import { PlaceInfoPanel } from '@/components/place-info-panel';
@@ -13,7 +11,7 @@ import { PlaceMarker } from '@/components/place-marker';
 import { PlaceSearchOverlay } from '@/components/place-search-overlay';
 import { LYON_CENTER, LYON_CENTER_LNG_LAT } from '@/constants/map';
 import { placesAtom } from '@/state/places-atom';
-import { hasFreeOption, isFullyFree } from '@/utils/place-pricing';
+import { isFullyFree } from '@/utils/place-pricing';
 
 const MAP_STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
 
@@ -39,19 +37,14 @@ export function CafeMap() {
   const [noSurchargeOnly, setNoSurchargeOnly] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
-  const [legendOpen, setLegendOpen] = useState(false);
 
   const deselect = useCallback(() => setSelectedPlace(null), []);
-  const selectPlace = useCallback((place: Place) => {
-    setSelectedPlace(place);
-    setLegendOpen(false);
-  }, []);
+  const selectPlace = useCallback((place: Place) => setSelectedPlace(place), []);
 
   const visiblePlaces = useMemo(
     () => (noSurchargeOnly ? places.filter(isFullyFree) : places),
     [places, noSurchargeOnly],
   );
-  const freeCount = useMemo(() => places.filter(hasFreeOption).length, [places]);
   const origin = currentPosition?.coords ?? LYON_CENTER;
 
   return (
@@ -73,15 +66,7 @@ export function CafeMap() {
         onPressSearch={() => setSearchOpen(true)}
         onPressFilter={() => setFilterOpen(true)}
         filterActive={noSurchargeOnly}
-        onPressLegend={() => setLegendOpen((value) => !value)}
-        legendActive={legendOpen}
       />
-
-      {places.length > 0 && !selectedPlace && (
-        <MapBottomBar freeCount={freeCount} totalCount={places.length} />
-      )}
-
-      {legendOpen && !selectedPlace && <MapLegend />}
 
       {selectedPlace && <PlaceInfoPanel place={selectedPlace} places={places} />}
 
