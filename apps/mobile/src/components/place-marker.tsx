@@ -1,8 +1,9 @@
 import type { Place } from '@milk/domain';
 import { Marker, type MarkerEvent } from '@maplibre/maplibre-react-native';
 import { memo } from 'react';
-import { StyleSheet, View } from 'react-native';
 import type { NativeSyntheticEvent } from 'react-native';
+
+import { PlacePricePin } from '@/components/place-price-pin';
 
 interface PlaceMarkerProps {
   place: Place;
@@ -25,24 +26,7 @@ export const PlaceMarker = memo(function PlaceMarker({ place, selected, onPress 
         onPress(place);
       }}
     >
-      <View style={[styles.pin, selected && styles.pinSelected]} />
+      <PlacePricePin place={place} selected={selected} />
     </Marker>
   );
-});
-
-const styles = StyleSheet.create({
-  pin: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    backgroundColor: '#3c87f7',
-    borderWidth: 2,
-    borderColor: '#ffffff',
-  },
-  pinSelected: {
-    backgroundColor: '#1d4ed8',
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-  },
 });

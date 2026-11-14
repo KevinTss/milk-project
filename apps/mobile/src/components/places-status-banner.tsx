@@ -1,5 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { ActivityIndicator, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -12,10 +13,11 @@ import { placesLoadableAtom } from '@/state/places-atom';
  */
 export function PlacesStatusBanner() {
   const places = useAtomValue(placesLoadableAtom);
+  const insets = useSafeAreaInsets();
 
   if (places.state === 'loading') {
     return (
-      <ThemedView type="backgroundElement" style={styles.banner}>
+      <ThemedView type="backgroundElement" style={[styles.banner, { top: insets.top + Spacing.two }]}>
         <ActivityIndicator size="small" />
         <ThemedText type="small">Loading cafés…</ThemedText>
       </ThemedView>
@@ -24,7 +26,7 @@ export function PlacesStatusBanner() {
 
   if (places.state === 'hasError') {
     return (
-      <ThemedView type="backgroundElement" style={styles.banner}>
+      <ThemedView type="backgroundElement" style={[styles.banner, { top: insets.top + Spacing.two }]}>
         <ThemedText type="small">Could not load cafés. Pull down to retry.</ThemedText>
       </ThemedView>
     );
@@ -36,7 +38,6 @@ export function PlacesStatusBanner() {
 const styles = StyleSheet.create({
   banner: {
     position: 'absolute',
-    top: Spacing.five,
     left: Spacing.three,
     right: Spacing.three,
     flexDirection: 'row',
